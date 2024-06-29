@@ -1,0 +1,82 @@
+import nltk
+from nltk.tokenize import word_tokenize
+import spacy
+from spacy import displacy
+
+# Inicialización de nltk (necesario instalar punkt)
+nltk.download('punkt')
+
+# Inicialización de spaCy
+nlp = spacy.load("en_core_web_sm")
+
+class IAInteractiva:
+    def __init__(self):
+        self.base_conocimiento = {}
+        self.interacciones = []
+
+    def actualizar_conocimiento(self, mensaje_usuario, respuesta_ia):
+        # Actualizar la base de conocimiento con la interacción más reciente
+        self.interacciones.append((mensaje_usuario, respuesta_ia))
+        
+        # Lógica para procesar y aprender de la interacción usando NLP (puede ser personalizada)
+        # Ejemplo básico: tokenización y análisis de temas con NLTK y spaCy
+        tokens = word_tokenize(mensaje_usuario)
+        temas = self.extraer_temas_con_spacy(mensaje_usuario)
+        
+        # Aquí podrías implementar lógica más avanzada para aprender patrones y contextos
+        
+    def escuchar_y_responder(self, mensaje_usuario):
+        # Función para escuchar al usuario y generar una respuesta
+        
+        # Simular respuesta inicial básica
+        respuesta_ia = "Entiendo, ¿puedes explicarme más sobre eso?"
+        
+        # Actualizar conocimiento con la interacción actual
+        self.actualizar_conocimiento(mensaje_usuario, respuesta_ia)
+        
+        return respuesta_ia
+
+    def recomendar_recursos(self):
+        # Función para recomendar recursos personalizados basados en interacciones previas
+        
+        # Simular recomendación básica aleatoria
+        recursos = [
+            "Te recomendaría leer este artículo sobre manejo del estrés: [enlace].",
+            "Podrías encontrar útiles estas técnicas de respiración para reducir la ansiedad: [enlace]."
+        ]
+        recomendacion = random.choice(recursos)
+        
+        return recomendacion
+    
+    def extraer_temas_con_spacy(self, texto):
+        # Función para extraer temas principales usando spaCy
+        
+        doc = nlp(texto)
+        temas = []
+        
+        for token in doc:
+            if token.pos_ in ["NOUN", "VERB", "ADJ"]:  # Filtrar sustantivos, verbos y adjetivos
+                temas.append(token.text)
+        
+        return temas
+
+# Ejemplo de uso básico
+ia = IAInteractiva()
+
+# Simular interacciones de usuario
+interacciones_de_prueba = [
+    "Hola, me siento bastante estresado últimamente.",
+    "He estado teniendo problemas para conciliar el sueño.",
+    "No estoy seguro de cómo manejar la presión en el trabajo."
+]
+
+for mensaje_usuario in interacciones_de_prueba:
+    respuesta_ia = ia.escuchar_y_responder(mensaje_usuario)
+    print(f"Usuario: {mensaje_usuario}")
+    print(f"IA: {respuesta_ia}")
+    print()
+
+# Simular recomendación de recursos
+recomendacion = ia.recomendar_recursos()
+print("Recomendación de la IA:")
+print(recomendacion)
