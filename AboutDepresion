@@ -1,0 +1,30 @@
+def acceder_recursos_y_consultas(input_usuario):
+    # Paso 1: Detectar patrones y determinar si hay señales de depresión
+    if detectar_senales_depresion(input_usuario):
+        respuesta = "Parece que estás experimentando señales de depresión. Estoy aquí para ayudarte.\n"
+        respuesta += "Vamos a explorar algunas estrategias y recursos que pueden ser útiles para ti.\n"
+        respuesta += "¿Te gustaría comenzar una consulta personalizada para entender mejor tu situación?"
+    else:
+        respuesta = "Entiendo que estás buscando recursos para entender y manejar la depresión. Estoy aquí para ayudarte.\n"
+        respuesta += "¿Qué aspectos específicos te gustaría abordar o aprender más?"
+    
+    return respuesta
+
+def detectar_senales_depresion(input_usuario):
+    # Función para detectar patrones que podrían indicar señales de depresión en el input del usuario
+    # Podría incluir análisis de texto utilizando técnicas de procesamiento de lenguaje natural (NLP)
+    # y modelos de machine learning para identificar palabras clave, tono emocional, etc.
+    
+    # Ejemplo simplificado (basado en palabras clave)
+    palabras_clave_depresion = ["tristeza", "desesperanza", "cansancio constante", "falta de interés"]
+    
+    for palabra in palabras_clave_depresion:
+        if palabra in input_usuario.lower():
+            return True
+    
+    return False
+
+# Ejemplo de uso:
+input_usuario = input("Ingresa tu mensaje: ")
+respuesta = acceder_recursos_y_consultas(input_usuario)
+print(respuesta)
