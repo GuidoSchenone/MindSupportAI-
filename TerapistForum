@@ -1,0 +1,69 @@
+# Base de datos simulada de terapeutas
+base_de_datos_terapeutas = {
+    "terapeuta1": {
+        "nombre": "Dr. Juan Pérez",
+        "especialidades": ["Depresión", "Problemas Familiares"],
+        "experiencia": "Más de 15 años ayudando a individuos y familias a superar la depresión y mejorar la comunicación familiar.",
+        "reseñas": [
+            {"usuario": "Usuario1", "puntuacion": 4, "comentario": "Excelente en terapia familiar."},
+            {"usuario": "Usuario2", "puntuacion": 5, "comentario": "Muy recomendado para depresión."},
+        ],
+        "contacto": "Correo: juanperez@example.com, Teléfono: +123456789"
+    },
+    "terapeuta2": {
+        "nombre": "Lic. María García",
+        "especialidades": ["Adicciones", "Casos Psiquiátricos"],
+        "experiencia": "Especializada en el tratamiento de adicciones y trastornos psiquiátricos complejos.",
+        "reseñas": [
+            {"usuario": "Usuario3", "puntuacion": 5, "comentario": "Me ayudó a recuperarme de mi adicción."},
+            {"usuario": "Usuario4", "puntuacion": 4, "comentario": "Gran apoyo en casos difíciles."},
+        ],
+        "contacto": "Correo: mariagarcia@example.com, Teléfono: +987654321"
+    },
+    # Añadir más terapeutas según sea necesario
+}
+
+def buscar_terapeuta_por_especialidad(especialidad):
+    # Función para buscar terapeutas por especialidad
+    
+    resultados = []
+    
+    for terapeuta_id, datos in base_de_datos_terapeutas.items():
+        if especialidad.lower() in [esp.lower() for esp in datos["especialidades"]]:
+            resultados.append((terapeuta_id, datos["nombre"]))
+    
+    return resultados
+
+def obtener_perfil_terapeuta(terapeuta_id):
+    # Función para obtener el perfil completo de un terapeuta según su ID
+    
+    if terapeuta_id in base_de_datos_terapeutas:
+        return base_de_datos_terapeutas[terapeuta_id]
+    else:
+        return None
+
+# Ejemplo de uso:
+# 1. Buscar terapeutas por especialidad
+especialidad_busqueda = "Depresión"
+resultados_busqueda = buscar_terapeuta_por_especialidad(especialidad_busqueda)
+
+print(f"Resultados para la especialidad '{especialidad_busqueda}':")
+for terapeuta_id, nombre in resultados_busqueda:
+    print(f"ID: {terapeuta_id}, Nombre: {nombre}")
+
+print("\n")
+
+# 2. Obtener perfil detallado de un terapeuta
+terapeuta_seleccionado = "terapeuta1"
+perfil_terapeuta = obtener_perfil_terapeuta(terapeuta_seleccionado)
+
+if perfil_terapeuta:
+    print(f"Perfil del Terapeuta '{perfil_terapeuta['nombre']}':")
+    print(f"Especialidades: {', '.join(perfil_terapeuta['especialidades'])}")
+    print(f"Experiencia: {perfil_terapeuta['experiencia']}")
+    print("Reseñas:")
+    for reseña in perfil_terapeuta['reseñas']:
+        print(f"- Usuario: {reseña['usuario']}, Puntuación: {reseña['puntuacion']}, Comentario: {reseña['comentario']}")
+    print(f"Contacto: {perfil_terapeuta['contacto']}")
+else:
+    print("No se encontró el terapeuta seleccionado.")
