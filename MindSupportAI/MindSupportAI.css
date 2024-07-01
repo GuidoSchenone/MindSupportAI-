@@ -1,0 +1,112 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+a {
+    color: #4db8ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #1ab2ff;
+    text-decoration: underline;
+}
+
+#title {
+    font-size: 3em;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#description {
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#survey-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+input[type="text"], input[type="email"], input[type="number"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #666666;
+    border-radius: 4px;
+    background-color: #333333;
+    color: #ffffff;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    border: none;
+}
+
+legend {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #4db8ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #1ab2ff;
+}
+
+#immediate-assistance {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #ff4d4d;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#immediate-assistance:hover {
+    background-color: #ff1a1a;
+}
