@@ -1,0 +1,68 @@
+therapists_database = {
+    "therapist1": {
+        "name": "Dr. Juan Pérez",
+        "specialties": ["Depression", "Family Issues"],
+        "experience": "Over 15 years helping individuals and families overcome depression and improve family communication.",
+        "reviews": [
+            {"user": "User1", "rating": 4, "comment": "Excellent in family therapy."},
+            {"user": "User2", "rating": 5, "comment": "Highly recommended for depression."},
+        ],
+        "contact": "Email: juanperez@example.com, Phone: +123456789"
+    },
+    "therapist2": {
+        "name": "Lic. María García",
+        "specialties": ["Addictions", "Psychiatric Cases"],
+        "experience": "Specialized in the treatment of addictions and complex psychiatric disorders.",
+        "reviews": [
+            {"user": "User3", "rating": 5, "comment": "Helped me recover from my addiction."},
+            {"user": "User4", "rating": 4, "comment": "Great support in difficult cases."},
+        ],
+        "contact": "Email: mariagarcia@example.com, Phone: +987654321"
+    },
+    # Add more therapists as needed
+}
+
+def search_therapist_by_specialty(specialty):
+    # Function to search therapists by specialty
+    
+    results = []
+    
+    for therapist_id, data in therapists_database.items():
+        if specialty.lower() in [spec.lower() for spec in data["specialties"]]:
+            results.append((therapist_id, data["name"]))
+    
+    return results
+
+def get_therapist_profile(therapist_id):
+    # Function to get the full profile of a therapist by their ID
+    
+    if therapist_id in therapists_database:
+        return therapists_database[therapist_id]
+    else:
+        return None
+
+# Example usage:
+# 1. Search therapists by specialty
+search_specialty = "Depression"
+search_results = search_therapist_by_specialty(search_specialty)
+
+print(f"Results for specialty '{search_specialty}':")
+for therapist_id, name in search_results:
+    print(f"ID: {therapist_id}, Name: {name}")
+
+print("\n")
+
+# 2. Get detailed profile of a therapist
+selected_therapist = "therapist1"
+therapist_profile = get_therapist_profile(selected_therapist)
+
+if therapist_profile:
+    print(f"Therapist Profile '{therapist_profile['name']}':")
+    print(f"Specialties: {', '.join(therapist_profile['specialties'])}")
+    print(f"Experience: {therapist_profile['experience']}")
+    print("Reviews:")
+    for review in therapist_profile['reviews']:
+        print(f"- User: {review['user']}, Rating: {review['rating']}, Comment: {review['comment']}")
+    print(f"Contact: {therapist_profile['contact']}")
+else:
+    print("Selected therapist not found.")
